@@ -1,0 +1,15 @@
+name: Keep Render service awake
+
+# El free tier de Render apaga el servicio a los 15 min de inactividad.
+# Este ping cada 10 min evita que llegue a ese límite.
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping ParkYa
+        run: curl -fsS -o /dev/null https://parkya-afvw.onrender.com/controllers/login.php
