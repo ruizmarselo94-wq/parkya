@@ -18,6 +18,7 @@
 </section>
 
 <h2>Sesiones activas</h2>
+<div class="table-wrap">
 <table class="table">
     <thead>
         <tr>
@@ -41,3 +42,4 @@
         <?php endif; ?>
     </tbody>
 </table>
+</div>

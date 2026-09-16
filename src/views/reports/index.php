@@ -1,6 +1,7 @@
 <h1>Reportes</h1>
 
 <h2>Ocupación</h2>
+<div class="table-wrap">
 <table class="table">
     <thead><tr><th>Estacionamiento</th><th>Ocupados</th><th>Libres</th><th>Total</th></tr></thead>
     <tbody>
@@ -14,6 +15,7 @@
         <?php endforeach; ?>
     </tbody>
 </table>
+</div>
 
 <h2>Ingresos</h2>
 <form method="get" class="inline-form">
@@ -24,6 +26,7 @@
 
 <p class="total">Total del período: <strong><?= money($totalIncome) ?> Gs.</strong></p>
 
+<div class="table-wrap">
 <table class="table">
     <thead><tr><th>Fecha</th><th>Método</th><th>Total</th></tr></thead>
     <tbody>
@@ -39,3 +42,4 @@
         <?php endif; ?>
     </tbody>
 </table>
+</div>

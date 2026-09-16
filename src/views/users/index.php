@@ -21,6 +21,7 @@
     </div>
 
     <div class="card">
+        <div class="table-wrap">
         <table class="table">
             <thead><tr><th>Usuario</th><th>Nombre</th><th>Rol</th><th>Estado</th></tr></thead>
             <tbody>
@@ -34,5 +35,6 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
+        </div>
     </div>
 </div>

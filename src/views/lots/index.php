@@ -49,6 +49,7 @@
         </div>
 
         <div class="card">
+            <div class="table-wrap">
             <table class="table">
                 <thead><tr><th>Código</th><th>Tipo</th><th>Estado</th></tr></thead>
                 <tbody>
@@ -64,6 +65,7 @@
                     <?php endif; ?>
                 </tbody>
             </table>
+            </div>
         </div>
     </div>
 <?php endif; ?>

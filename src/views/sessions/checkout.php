@@ -29,6 +29,7 @@
 <?php endif; ?>
 
 <h2>Vehículos estacionados</h2>
+<div class="table-wrap">
 <table class="table">
     <thead>
         <tr>
@@ -54,3 +55,4 @@
         <?php endif; ?>
     </tbody>
 </table>
+</div>
