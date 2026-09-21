@@ -2,13 +2,21 @@
 
 <div class="grid">
     <div class="card">
-        <h2>Nuevo estacionamiento</h2>
+        <h2><?= $editLot ? 'Editar estacionamiento' : 'Nuevo estacionamiento' ?></h2>
         <form method="post">
-            <input type="hidden" name="action" value="create_lot">
-            <label>Nombre <input type="text" name="name" required></label>
-            <label>Dirección <input type="text" name="address" required></label>
-            <button type="submit">Crear</button>
+            <?php if ($editLot): ?>
+                <input type="hidden" name="action" value="update_lot">
+                <input type="hidden" name="id" value="<?= (int) $editLot['id'] ?>">
+            <?php else: ?>
+                <input type="hidden" name="action" value="create_lot">
+            <?php endif; ?>
+            <label>Nombre <input type="text" name="name" required value="<?= e($editLot['name'] ?? '') ?>"></label>
+            <label>Dirección <input type="text" name="address" required value="<?= e($editLot['address'] ?? '') ?>"></label>
+            <button type="submit"><?= $editLot ? 'Guardar cambios' : 'Crear' ?></button>
         </form>
+        <?php if ($editLot): ?>
+            <p><a href="lots.php">Cancelar edición</a></p>
+        <?php endif; ?>
     </div>
 
     <div class="card">
@@ -22,6 +30,14 @@
                     </a>
                     <span class="muted"><?= e($lot['address']) ?></span>
                     <?= $lot['is_active'] ? '' : '<span class="badge">inactivo</span>' ?>
+                    <div class="row-actions">
+                        <a href="lots.php?edit_lot=<?= (int) $lot['id'] ?>">Editar</a>
+                        <form method="post" onsubmit="return confirm('¿Eliminar este estacionamiento? Se borran también sus lugares y tarifas.');">
+                            <input type="hidden" name="action" value="delete_lot">
+                            <input type="hidden" name="id" value="<?= (int) $lot['id'] ?>">
+                            <button type="submit" class="link-danger">Eliminar</button>
+                        </form>
+                    </div>
                 </li>
             <?php endforeach; ?>
             <?php if (empty($lots)): ?>
@@ -39,32 +55,58 @@ foreach ($lots as $lot) {
         break;
     }
 }
+
+$spaceTypes = ['standard' => 'Estándar', 'handicap' => 'Discapacidad', 'compact' => 'Compacto'];
+$spaceStatuses = ['available' => 'Disponible', 'reserved' => 'Reservado', 'out_of_service' => 'Fuera de servicio'];
 ?>
 
 <?php if ($selectedLot): ?>
     <h2>Lugares de <?= e($selectedLot['name']) ?></h2>
     <div class="grid">
         <div class="card">
-            <h3>Nuevo lugar</h3>
+            <h3><?= $editSpace ? 'Editar lugar' : 'Nuevo lugar' ?></h3>
             <form method="post">
-                <input type="hidden" name="action" value="create_space">
                 <input type="hidden" name="lot_id" value="<?= $selectedLotId ?>">
-                <label>Código <input type="text" name="code" required placeholder="A1"></label>
+                <?php if ($editSpace): ?>
+                    <input type="hidden" name="action" value="update_space">
+                    <input type="hidden" name="id" value="<?= (int) $editSpace['id'] ?>">
+                <?php else: ?>
+                    <input type="hidden" name="action" value="create_space">
+                <?php endif; ?>
+                <label>Código
+                    <input type="text" name="code" required placeholder="A1" value="<?= e($editSpace['code'] ?? '') ?>">
+                </label>
                 <label>Tipo
                     <select name="type">
-                        <option value="standard">Estándar</option>
-                        <option value="handicap">Discapacidad</option>
-                        <option value="compact">Compacto</option>
+                        <?php foreach ($spaceTypes as $value => $typeLabel): ?>
+                            <option value="<?= $value ?>" <?= ($editSpace['type'] ?? 'standard') === $value ? 'selected' : '' ?>>
+                                <?= $typeLabel ?>
+                            </option>
+                        <?php endforeach; ?>
                     </select>
                 </label>
-                <button type="submit">Agregar lugar</button>
+                <?php if ($editSpace): ?>
+                    <label>Estado
+                        <select name="status">
+                            <?php foreach ($spaceStatuses as $value => $statusLabel): ?>
+                                <option value="<?= $value ?>" <?= ($editSpace['status'] ?? 'available') === $value ? 'selected' : '' ?>>
+                                    <?= $statusLabel ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </label>
+                <?php endif; ?>
+                <button type="submit"><?= $editSpace ? 'Guardar cambios' : 'Agregar lugar' ?></button>
             </form>
+            <?php if ($editSpace): ?>
+                <p><a href="lots.php?lot_id=<?= $selectedLotId ?>">Cancelar edición</a></p>
+            <?php endif; ?>
         </div>
 
         <div class="card">
             <div class="table-wrap">
             <table class="table">
-                <thead><tr><th>Código</th><th>Tipo</th><th>Estado</th></tr></thead>
+                <thead><tr><th>Código</th><th>Tipo</th><th>Estado</th><th></th></tr></thead>
                 <tbody>
                     <?php foreach ($spaces as $space): ?>
                         <tr>
@@ -77,10 +119,21 @@ foreach ($lots as $lot) {
                                     <span class="badge badge-success"><?= e(label($space['status'])) ?></span>
                                 <?php endif; ?>
                             </td>
+                            <td>
+                                <div class="row-actions">
+                                    <a href="lots.php?lot_id=<?= $selectedLotId ?>&edit_space=<?= (int) $space['id'] ?>">Editar</a>
+                                    <form method="post" onsubmit="return confirm('¿Eliminar este lugar?');">
+                                        <input type="hidden" name="action" value="delete_space">
+                                        <input type="hidden" name="lot_id" value="<?= $selectedLotId ?>">
+                                        <input type="hidden" name="id" value="<?= (int) $space['id'] ?>">
+                                        <button type="submit" class="link-danger">Eliminar</button>
+                                    </form>
+                                </div>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                     <?php if (empty($spaces)): ?>
-                        <tr><td colspan="3" class="muted">Sin lugares cargados.</td></tr>
+                        <tr><td colspan="4" class="muted">Sin lugares cargados.</td></tr>
                     <?php endif; ?>
                 </tbody>
             </table>

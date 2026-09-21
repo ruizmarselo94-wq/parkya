@@ -29,3 +29,27 @@ function createRate(PDO $pdo, array $data): void {
         $data['valid_to'] ?: null,
     ]);
 }
+
+function findRate(PDO $pdo, int $id): ?array {
+    $stmt = $pdo->prepare('SELECT * FROM rates WHERE id = ?');
+    $stmt->execute([$id]);
+    return $stmt->fetch() ?: null;
+}
+
+function updateRate(PDO $pdo, int $id, array $data): void {
+    $stmt = $pdo->prepare(
+        'UPDATE rates SET type = ?, amount = ?, valid_from = ?, valid_to = ? WHERE id = ?'
+    );
+    $stmt->execute([
+        $data['type'],
+        $data['amount'],
+        $data['valid_from'],
+        $data['valid_to'] ?: null,
+        $id,
+    ]);
+}
+
+function deleteRate(PDO $pdo, int $id): void {
+    $stmt = $pdo->prepare('DELETE FROM rates WHERE id = ?');
+    $stmt->execute([$id]);
+}

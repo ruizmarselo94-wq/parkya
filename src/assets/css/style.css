@@ -162,6 +162,15 @@ h2 { letter-spacing: -0.01em; }
     align-items: start;
 }
 
+/* Apiladas a ancho completo en vez de compartir la fila: para tablas con
+   varias columnas que no entran bien a media pantalla junto a un formulario */
+.stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
 .kpi-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -432,6 +441,24 @@ button:hover { background: var(--primary-dark); }
 
 .badge-success { background: var(--success-bg); color: var(--success); }
 .badge-muted { background: #f3f4f6; color: var(--muted); }
+
+.row-actions { display: flex; align-items: center; gap: 0.85rem; }
+.row-actions form { margin: 0; }
+
+.link-danger {
+    width: auto;
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--error);
+    font-weight: 500;
+    font-size: inherit;
+    font-family: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.link-danger:hover { text-decoration: underline; background: none; }
 
 .total { font-size: 1.15rem; }
 

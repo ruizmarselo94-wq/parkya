@@ -20,6 +20,16 @@ function createLot(PDO $pdo, array $data): int {
     return (int) $stmt->fetchColumn();
 }
 
+function updateLot(PDO $pdo, int $id, array $data): void {
+    $stmt = $pdo->prepare('UPDATE parking_lots SET name = ?, address = ? WHERE id = ?');
+    $stmt->execute([$data['name'], $data['address'], $id]);
+}
+
+function deleteLot(PDO $pdo, int $id): void {
+    $stmt = $pdo->prepare('DELETE FROM parking_lots WHERE id = ?');
+    $stmt->execute([$id]);
+}
+
 // Vista parking_lot_summary: total, ocupados y libres por estacionamiento
 function lotOccupancySummary(PDO $pdo): array {
     return $pdo->query('SELECT * FROM parking_lot_summary ORDER BY name')->fetchAll();
