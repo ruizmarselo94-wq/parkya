@@ -244,6 +244,31 @@ button {
 
 button:hover { background: var(--primary-dark); }
 
+.password-field { position: relative; }
+
+.password-field input { padding-right: 2.5rem; }
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 0.35rem;
+    transform: translateY(-50%);
+    width: auto;
+    background: transparent;
+    border: none;
+    padding: 0.35rem;
+    border-radius: 6px;
+    display: flex;
+    color: var(--muted);
+    cursor: pointer;
+}
+
+.password-toggle:hover { background: var(--primary-light); color: var(--primary); }
+.password-toggle svg { width: 1.1rem; height: 1.1rem; }
+.password-toggle .icon-hide { display: none; }
+.password-field.revealed .icon-show { display: none; }
+.password-field.revealed .icon-hide { display: block; }
+
 .inline-form { margin-bottom: 1rem; }
 
 /* Las tablas no se achican: en pantallas angostas se scrollea horizontal en vez de cortarse */
