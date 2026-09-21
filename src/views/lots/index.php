@@ -72,10 +72,9 @@ $spaceStatuses = ['available' => 'Disponible', 'reserved' => 'Reservado', 'out_o
 ?>
 
 <?php if ($selectedLot): ?>
-    <h2>Lugares de <?= e($selectedLot['name']) ?></h2>
     <div class="stack">
         <div class="card">
-            <h3><?= $editSpace ? 'Editar lugar' : 'Nuevo lugar' ?></h3>
+            <h2><?= $editSpace ? 'Editar lugar de ' : 'Nuevo lugar en ' ?><?= e($selectedLot['name']) ?></h2>
             <form method="post" class="fields">
                 <input type="hidden" name="lot_id" value="<?= $selectedLotId ?>">
                 <?php if ($editSpace): ?>
@@ -115,6 +114,7 @@ $spaceStatuses = ['available' => 'Disponible', 'reserved' => 'Reservado', 'out_o
         </div>
 
         <div class="card">
+            <h2>Lugares de <?= e($selectedLot['name']) ?></h2>
             <div class="table-wrap">
             <table class="table">
                 <thead><tr><th>Código</th><th>Tipo</th><th>Estado</th><th></th></tr></thead>

@@ -40,6 +40,7 @@
     </div>
 
     <div class="card">
+        <h2>Usuarios registrados</h2>
         <div class="table-wrap">
         <table class="table">
             <thead><tr><th>Usuario</th><th>Nombre</th><th>Rol</th><th>Estado</th><th></th></tr></thead>

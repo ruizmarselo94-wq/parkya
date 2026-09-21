@@ -1,22 +1,39 @@
+<?php
+$rateTypes = ['hourly' => 'Por hora', 'daily' => 'Por día', 'monthly' => 'Mensual'];
+
+$selectedLot = null;
+foreach ($lots as $lot) {
+    if ((int) $lot['id'] === $selectedLotId) {
+        $selectedLot = $lot;
+        break;
+    }
+}
+$lotName = $selectedLot['name'] ?? '';
+?>
+
 <h1>Tarifas</h1>
-
-<form method="get" class="inline-form">
-    <label>Estacionamiento
-        <select name="lot_id" onchange="this.form.submit()">
-            <?php foreach ($lots as $lot): ?>
-                <option value="<?= (int) $lot['id'] ?>" <?= $lot['id'] == $selectedLotId ? 'selected' : '' ?>>
-                    <?= e($lot['name']) ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
-    </label>
-</form>
-
-<?php $rateTypes = ['hourly' => 'Por hora', 'daily' => 'Por día', 'monthly' => 'Mensual']; ?>
 
 <div class="stack">
     <div class="card">
-        <h2><?= $editRate ? 'Editar tarifa' : 'Nueva tarifa' ?></h2>
+        <form method="get" class="inline-form">
+            <label>Estacionamiento
+                <select name="lot_id" onchange="this.form.submit()">
+                    <?php foreach ($lots as $lot): ?>
+                        <option value="<?= (int) $lot['id'] ?>" <?= $lot['id'] == $selectedLotId ? 'selected' : '' ?>>
+                            <?= e($lot['name']) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </label>
+        </form>
+        <p class="muted">Las tarifas que ves y creás abajo son solo de este estacionamiento.</p>
+    </div>
+
+    <div class="card">
+        <h2>
+            <?= $editRate ? 'Editar tarifa' : 'Nueva tarifa' ?>
+            <?= $lotName !== '' ? 'de ' . e($lotName) : '' ?>
+        </h2>
         <form method="post" class="fields">
             <input type="hidden" name="lot_id" value="<?= $selectedLotId ?>">
             <?php if ($editRate): ?>
@@ -49,6 +66,7 @@
     </div>
 
     <div class="card">
+        <h2>Tarifas<?= $lotName !== '' ? ' de ' . e($lotName) : '' ?></h2>
         <div class="table-wrap">
         <table class="table">
             <thead><tr><th>Tipo</th><th>Monto</th><th>Desde</th><th>Hasta</th><th></th></tr></thead>
