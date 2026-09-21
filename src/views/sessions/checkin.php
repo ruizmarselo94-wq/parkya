@@ -1,7 +1,7 @@
 <h1>Registrar entrada</h1>
 
 <form method="post" class="card">
-    <fieldset>
+    <fieldset class="fields">
         <legend>Vehículo</legend>
         <label>Placa
             <input type="text" name="plate" required maxlength="10" style="text-transform: uppercase">
@@ -18,7 +18,7 @@
         <label>Color <input type="text" name="color"></label>
     </fieldset>
 
-    <fieldset>
+    <fieldset class="fields">
         <legend>Cliente (si la placa es nueva)</legend>
         <label>Nombre completo <input type="text" name="customer_full_name"></label>
         <label>Teléfono <input type="text" name="customer_phone"></label>
@@ -26,7 +26,7 @@
         <label>Documento <input type="text" name="customer_document"></label>
     </fieldset>
 
-    <fieldset>
+    <fieldset class="fields">
         <legend>Lugar disponible</legend>
         <?php if (empty($spaces)): ?>
             <p class="muted">No hay lugares disponibles en ningún estacionamiento.</p>

@@ -3,7 +3,7 @@
 <div class="grid">
     <div class="card">
         <h2>Nuevo usuario</h2>
-        <form method="post">
+        <form method="post" class="fields">
             <label>Usuario <input type="text" name="username" required></label>
             <label>Contraseña <input type="password" name="password" required minlength="6"></label>
             <label>Nombre completo <input type="text" name="full_name" required></label>
@@ -30,7 +30,13 @@
                         <td><?= e($u['username']) ?></td>
                         <td><?= e($u['full_name']) ?></td>
                         <td><?= e($u['role']) ?></td>
-                        <td><?= $u['is_active'] ? 'Activo' : 'Inactivo' ?></td>
+                        <td>
+                            <?php if ($u['is_active']): ?>
+                                <span class="badge badge-success">Activo</span>
+                            <?php else: ?>
+                                <span class="badge badge-muted">Inactivo</span>
+                            <?php endif; ?>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

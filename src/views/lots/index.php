@@ -57,7 +57,13 @@
                         <tr>
                             <td><?= e($space['code']) ?></td>
                             <td><?= e($space['type']) ?></td>
-                            <td><?= $space['is_occupied'] ? 'Ocupado' : e($space['status']) ?></td>
+                            <td>
+                                <?php if ($space['is_occupied']): ?>
+                                    <span class="badge">Ocupado</span>
+                                <?php else: ?>
+                                    <span class="badge badge-success"><?= e($space['status']) ?></span>
+                                <?php endif; ?>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                     <?php if (empty($spaces)): ?>

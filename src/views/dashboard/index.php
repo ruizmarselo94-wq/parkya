@@ -1,6 +1,6 @@
 <h1>Dashboard</h1>
 
-<section class="grid">
+<section class="stat-grid">
     <?php foreach ($lots as $lot): ?>
         <div class="card">
             <h3><?= e($lot['name']) ?></h3>
