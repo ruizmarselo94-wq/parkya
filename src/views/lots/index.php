@@ -22,28 +22,39 @@
     <div class="card">
         <h2>Listado</h2>
         <p class="muted">Elegí un estacionamiento para ver y agregar sus lugares.</p>
-        <ul class="plain-list">
-            <?php foreach ($lots as $lot): ?>
-                <li class="<?= (int) $lot['id'] === $selectedLotId ? 'plain-list-active' : '' ?>">
-                    <a href="lots.php?lot_id=<?= (int) $lot['id'] ?>">
-                        <?= (int) $lot['id'] === $selectedLotId ? '▸ ' : '' ?><?= e($lot['name']) ?>
-                    </a>
-                    <span class="muted"><?= e($lot['address']) ?></span>
-                    <?= $lot['is_active'] ? '' : '<span class="badge">inactivo</span>' ?>
-                    <div class="row-actions">
-                        <a class="btn-action btn-edit" href="lots.php?edit_lot=<?= (int) $lot['id'] ?>">Editar</a>
-                        <form method="post" onsubmit="return confirm('¿Eliminar este estacionamiento? Se borran también sus lugares y tarifas.');">
-                            <input type="hidden" name="action" value="delete_lot">
-                            <input type="hidden" name="id" value="<?= (int) $lot['id'] ?>">
-                            <button type="submit" class="btn-action btn-delete">Eliminar</button>
-                        </form>
-                    </div>
-                </li>
-            <?php endforeach; ?>
-            <?php if (empty($lots)): ?>
-                <li class="muted">Todavía no hay estacionamientos.</li>
-            <?php endif; ?>
-        </ul>
+        <div class="table-wrap">
+        <table class="table">
+            <thead><tr><th>Nombre</th><th>Dirección</th><th>Estado</th><th></th></tr></thead>
+            <tbody>
+                <?php foreach ($lots as $lot): ?>
+                    <tr class="<?= (int) $lot['id'] === $selectedLotId ? 'row-active' : '' ?>">
+                        <td><a href="lots.php?lot_id=<?= (int) $lot['id'] ?>"><?= e($lot['name']) ?></a></td>
+                        <td><?= e($lot['address']) ?></td>
+                        <td>
+                            <?php if ($lot['is_active']): ?>
+                                <span class="badge badge-success">Activo</span>
+                            <?php else: ?>
+                                <span class="badge badge-muted">Inactivo</span>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <div class="row-actions">
+                                <a class="btn-action btn-edit" href="lots.php?lot_id=<?= (int) $lot['id'] ?>&edit_lot=<?= (int) $lot['id'] ?>">Editar</a>
+                                <form method="post" onsubmit="return confirm('¿Eliminar este estacionamiento? Se borran también sus lugares y tarifas.');">
+                                    <input type="hidden" name="action" value="delete_lot">
+                                    <input type="hidden" name="id" value="<?= (int) $lot['id'] ?>">
+                                    <button type="submit" class="btn-action btn-delete">Eliminar</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+                <?php if (empty($lots)): ?>
+                    <tr><td colspan="4" class="muted">Todavía no hay estacionamientos.</td></tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+        </div>
     </div>
 </div>
 

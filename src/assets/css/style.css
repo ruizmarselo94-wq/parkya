@@ -418,19 +418,10 @@ button:hover { background: var(--primary-dark); }
 
 .table th { background: #f9fafb; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--muted); font-weight: 600; }
 
-.plain-list { list-style: none; padding: 0; margin: 0 -0.5rem; }
-.plain-list li { padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
-.plain-list li:last-child { border-bottom: none; }
-.plain-list a { color: var(--primary); text-decoration: none; font-weight: 500; }
-.plain-list a:hover { text-decoration: underline; }
-
-.plain-list-active { background: var(--primary-light); border-radius: 6px; }
-.plain-list-active a { font-weight: 700; }
-
-/* Las acciones siempre van pegadas al borde derecho, no importa cuánto
-   texto tenga cada fila antes (evita que "Editar/Eliminar" quede en una
-   posición distinta por fila) */
-.plain-list .row-actions { margin-left: auto; }
+/* Fila que corresponde al registro elegido en pantalla (ej. estacionamiento
+   cuyos lugares se están mostrando debajo) */
+.table tr.row-active td { background: var(--primary-light); font-weight: 600; }
+.table tr.row-active a { font-weight: 700; }
 
 .muted { color: var(--muted); }
 
