@@ -100,6 +100,7 @@ a { color: var(--primary); }
     font-size: 0.9rem;
     margin-left: auto;
     white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .navbar .session a { margin-left: 0.75rem; color: var(--primary); text-decoration: none; }
@@ -110,9 +111,13 @@ a { color: var(--primary); }
     padding: 1rem;
 }
 
+/* El nav queda siempre en su propia fila completa (marca+sesión arriba,
+   links abajo), en vez de competir por espacio en una sola fila: con 7
+   links + el nombre de rol, eso solo entra a partir de ~1450px y por
+   debajo recorta links sin avisar (ver commit de este fix). Así se evita
+   depender de un breakpoint que se puede romper si se agrega otro link. */
 @media (min-width: 640px) {
-    .navbar { flex-wrap: nowrap; padding: 0.85rem 1.75rem; }
-    .navbar nav { width: auto; order: 0; overflow-x: visible; }
+    .navbar { padding: 0.85rem 1.75rem; }
     .container { padding: 2rem 1.75rem; }
 }
 
