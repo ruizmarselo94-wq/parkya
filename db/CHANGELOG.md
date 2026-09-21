@@ -3,6 +3,15 @@
 Historial de consultas ejecutadas directamente en Neon (SQL Editor).
 Los archivos `.sql` de esta carpeta son respaldo, en orden de ejecución.
 
+## v1.2 - 21/09/2026 — `005_demo_data.sql`
+
+- Datos de demostración: segundo estacionamiento (Villa Morra) con sus
+  tarifas propias, más lugares en ambos, clientes y vehículos
+- Movimiento del día: 4 sesiones cerradas con su cobro (efectivo, tarjeta,
+  POS, transferencia) y 2 sesiones activas en curso
+- Tiempos relativos a `NOW()`: las sesiones activas muestran duración real
+  y el cobro se calcula en vivo al registrar la salida
+
 ## v1.1 - 15/09/2026 — `004_constraints.sql`
 
 - Renombrada `sessions` → `parking_sessions` (no confundir con sesiones de login PHP)

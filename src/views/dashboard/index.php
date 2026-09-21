@@ -54,7 +54,7 @@
                     <td><?= e($s['plate']) ?></td>
                     <td><?= e($s['lot_name']) ?></td>
                     <td><?= e($s['space_code']) ?></td>
-                    <td><?= e($s['entry_time']) ?></td>
+                    <td><?= e(formatDate($s['entry_time'])) ?></td>
                 </tr>
             <?php endforeach; ?>
             <?php if (empty($activeSessions)): ?>

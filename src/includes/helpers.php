@@ -25,6 +25,22 @@ function money(float|string $amount): string {
     return number_format((float) $amount, 0, ',', '.');
 }
 
+// La BD guarda TIMESTAMPTZ en UTC; se muestra en hora de Paraguay y sin
+// microsegundos (si no, en pantalla sale "2026-09-21 15:51:55.527718+00")
+function formatDate(?string $value): string {
+    if ($value === null || $value === '') {
+        return '';
+    }
+
+    try {
+        return (new DateTime($value))
+            ->setTimezone(new DateTimeZone('America/Asuncion'))
+            ->format('d/m/Y H:i');
+    } catch (Exception $e) {
+        return $value;
+    }
+}
+
 // Traduce los valores de enums de la BD (guardados en inglés) para mostrarlos en español
 function label(?string $key): string {
     static $labels = [

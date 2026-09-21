@@ -4,7 +4,7 @@
     <div class="card card-narrow">
         <h2><?= e($selected['plate']) ?></h2>
         <p><?= e($selected['lot_name']) ?> — Lugar <?= e($selected['space_code']) ?></p>
-        <p>Entrada: <?= e($selected['entry_time']) ?></p>
+        <p>Entrada: <?= e(formatDate($selected['entry_time'])) ?></p>
 
         <?php if ($costError): ?>
             <p class="alert alert-error"><?= e($costError) ?></p>
@@ -47,7 +47,7 @@
                     <td><?= e($s['plate']) ?></td>
                     <td><?= e($s['lot_name']) ?></td>
                     <td><?= e($s['space_code']) ?></td>
-                    <td><?= e($s['entry_time']) ?></td>
+                    <td><?= e(formatDate($s['entry_time'])) ?></td>
                     <td>
                         <div class="row-actions">
                             <a class="btn-action btn-edit" href="checkout.php?session_id=<?= (int) $s['id'] ?>">Cobrar</a>
