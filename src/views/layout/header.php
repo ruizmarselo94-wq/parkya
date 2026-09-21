@@ -36,7 +36,9 @@ $navClass = static fn (string $page): string => $page === $currentPage ? 'active
     </nav>
     <div class="session">
         <?= e($user['full_name']) ?> (<?= e(label($user['role'])) ?>)
-        <a href="logout.php">Salir</a>
+        <form method="post" action="logout.php" class="logout-form">
+            <button type="submit" class="btn-logout">Salir</button>
+        </form>
     </div>
 </header>
 <?php endif; ?>

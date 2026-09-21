@@ -13,10 +13,13 @@
 
     <div class="card">
         <h2>Listado</h2>
+        <p class="muted">Elegí un estacionamiento para ver y agregar sus lugares.</p>
         <ul class="plain-list">
             <?php foreach ($lots as $lot): ?>
-                <li>
-                    <a href="lots.php?lot_id=<?= (int) $lot['id'] ?>"><?= e($lot['name']) ?></a>
+                <li class="<?= (int) $lot['id'] === $selectedLotId ? 'plain-list-active' : '' ?>">
+                    <a href="lots.php?lot_id=<?= (int) $lot['id'] ?>">
+                        <?= (int) $lot['id'] === $selectedLotId ? '▸ ' : '' ?><?= e($lot['name']) ?>
+                    </a>
                     <span class="muted"><?= e($lot['address']) ?></span>
                     <?= $lot['is_active'] ? '' : '<span class="badge">inactivo</span>' ?>
                 </li>
@@ -28,8 +31,18 @@
     </div>
 </div>
 
-<?php if ($selectedLotId > 0): ?>
-    <h2>Lugares</h2>
+<?php
+$selectedLot = null;
+foreach ($lots as $lot) {
+    if ((int) $lot['id'] === $selectedLotId) {
+        $selectedLot = $lot;
+        break;
+    }
+}
+?>
+
+<?php if ($selectedLot): ?>
+    <h2>Lugares de <?= e($selectedLot['name']) ?></h2>
     <div class="grid">
         <div class="card">
             <h3>Nuevo lugar</h3>
