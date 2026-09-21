@@ -1,9 +1,9 @@
 <h1>Estacionamientos</h1>
 
-<div class="grid">
+<div class="stack">
     <div class="card">
         <h2><?= $editLot ? 'Editar estacionamiento' : 'Nuevo estacionamiento' ?></h2>
-        <form method="post">
+        <form method="post" class="fields">
             <?php if ($editLot): ?>
                 <input type="hidden" name="action" value="update_lot">
                 <input type="hidden" name="id" value="<?= (int) $editLot['id'] ?>">
@@ -62,10 +62,10 @@ $spaceStatuses = ['available' => 'Disponible', 'reserved' => 'Reservado', 'out_o
 
 <?php if ($selectedLot): ?>
     <h2>Lugares de <?= e($selectedLot['name']) ?></h2>
-    <div class="grid">
+    <div class="stack">
         <div class="card">
             <h3><?= $editSpace ? 'Editar lugar' : 'Nuevo lugar' ?></h3>
-            <form method="post">
+            <form method="post" class="fields">
                 <input type="hidden" name="lot_id" value="<?= $selectedLotId ?>">
                 <?php if ($editSpace): ?>
                     <input type="hidden" name="action" value="update_space">

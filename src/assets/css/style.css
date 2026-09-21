@@ -427,6 +427,11 @@ button:hover { background: var(--primary-dark); }
 .plain-list-active { background: var(--primary-light); border-radius: 6px; }
 .plain-list-active a { font-weight: 700; }
 
+/* Las acciones siempre van pegadas al borde derecho, no importa cuánto
+   texto tenga cada fila antes (evita que "Editar/Eliminar" quede en una
+   posición distinta por fila) */
+.plain-list .row-actions { margin-left: auto; }
+
 .muted { color: var(--muted); }
 
 .badge {

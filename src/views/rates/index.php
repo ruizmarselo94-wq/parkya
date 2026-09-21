@@ -14,10 +14,10 @@
 
 <?php $rateTypes = ['hourly' => 'Por hora', 'daily' => 'Por día', 'monthly' => 'Mensual']; ?>
 
-<div class="grid">
+<div class="stack">
     <div class="card">
         <h2><?= $editRate ? 'Editar tarifa' : 'Nueva tarifa' ?></h2>
-        <form method="post">
+        <form method="post" class="fields">
             <input type="hidden" name="lot_id" value="<?= $selectedLotId ?>">
             <?php if ($editRate): ?>
                 <input type="hidden" name="action" value="update">
