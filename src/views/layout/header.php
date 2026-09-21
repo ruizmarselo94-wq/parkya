@@ -15,7 +15,7 @@ $navClass = static fn (string $page): string => $page === $currentPage ? 'active
     <link rel="stylesheet" href="/assets/css/style.css">
     <script src="/assets/js/app.js" defer></script>
 </head>
-<body>
+<body class="<?= $user ? '' : 'auth-body' ?>">
 <?php if ($user): ?>
 <header class="navbar">
     <a class="brand" href="dashboard.php"><span class="logo-mark">P</span>ParkYa</a>
