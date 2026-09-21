@@ -1,3 +1,7 @@
+<?php
+// Variables que define el controlador antes de incluir esta vista
+/** @var array $spaces */
+?>
 <h1>Registrar entrada</h1>
 
 <form method="post" class="card">

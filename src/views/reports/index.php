@@ -1,3 +1,11 @@
+<?php
+// Variables que define el controlador antes de incluir esta vista
+/** @var string $from */
+/** @var array $income */
+/** @var array $lots */
+/** @var string $to */
+/** @var float $totalIncome */
+?>
 <h1>Reportes</h1>
 
 <div class="stack">

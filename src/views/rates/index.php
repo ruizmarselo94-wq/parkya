@@ -1,4 +1,9 @@
 <?php
+// Variables que define el controlador antes de incluir esta vista
+/** @var array|null $editRate */
+/** @var array $lots */
+/** @var array $rates */
+/** @var int $selectedLotId */
 $rateTypes = ['hourly' => 'Por hora', 'daily' => 'Por día', 'monthly' => 'Mensual'];
 
 $selectedLot = null;

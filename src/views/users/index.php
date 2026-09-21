@@ -1,3 +1,8 @@
+<?php
+// Variables que define el controlador antes de incluir esta vista
+/** @var array|null $editUser */
+/** @var array $users */
+?>
 <h1>Usuarios</h1>
 
 <div class="stack">

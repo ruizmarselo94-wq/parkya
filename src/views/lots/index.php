@@ -1,3 +1,11 @@
+<?php
+// Variables que define el controlador antes de incluir esta vista
+/** @var array|null $editLot */
+/** @var array|null $editSpace */
+/** @var array $lots */
+/** @var int $selectedLotId */
+/** @var array $spaces */
+?>
 <h1>Estacionamientos</h1>
 
 <div class="stack">

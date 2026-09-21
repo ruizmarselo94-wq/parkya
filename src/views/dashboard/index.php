@@ -1,3 +1,11 @@
+<?php
+// Variables que define el controlador antes de incluir esta vista
+/** @var array $activeSessions */
+/** @var array $lots */
+/** @var int $totalFree */
+/** @var int $totalOccupied */
+/** @var int $totalSpaces */
+?>
 <h1>Dashboard</h1>
 
 <div class="kpi-grid">

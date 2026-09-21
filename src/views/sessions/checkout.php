@@ -1,3 +1,10 @@
+<?php
+// Variables que define el controlador antes de incluir esta vista
+/** @var array $activeSessions */
+/** @var string|null $costError */
+/** @var float|null $estimatedCost */
+/** @var array|null $selected */
+?>
 <h1>Registrar salida</h1>
 
 <?php if ($selected): ?>

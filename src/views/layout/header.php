@@ -1,4 +1,6 @@
 <?php
+// Variables que define el controlador antes de incluir esta vista
+/** @var string|null $title */
 $user = currentUser();
 $currentPage = basename($_SERVER['SCRIPT_NAME'] ?? '');
 $navClass = static fn (string $page): string => $page === $currentPage ? 'active' : '';
