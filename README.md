@@ -1,6 +1,6 @@
 # ParkYa
 
-Sistema de gestión de estacionamiento desarrollado en PHP (sin frameworks) como parte del curso **Programación Web Backend con PHP**.
+Sistema de gestión de estacionamientos desarrollado en PHP (sin frameworks) como parte del curso **Programación Web Backend con PHP**.
 
 ## Descripción
 

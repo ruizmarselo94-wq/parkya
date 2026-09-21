@@ -4,7 +4,7 @@
             <span class="logo-mark">P</span>
             <span>ParkYa</span>
         </h1>
-        <p class="muted">Sistema de gestión de estacionamiento</p>
+        <p class="muted">Sistema de gestión de estacionamientos</p>
         <form method="post">
             <label>Usuario
                 <div class="input-icon">
