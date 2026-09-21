@@ -29,7 +29,7 @@
                     <tr>
                         <td><?= e($u['username']) ?></td>
                         <td><?= e($u['full_name']) ?></td>
-                        <td><?= e($u['role']) ?></td>
+                        <td><?= e(label($u['role'])) ?></td>
                         <td>
                             <?php if ($u['is_active']): ?>
                                 <span class="badge badge-success">Activo</span>

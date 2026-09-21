@@ -1,5 +1,24 @@
 <h1>Dashboard</h1>
 
+<div class="kpi-grid">
+    <div class="kpi">
+        <span class="kpi-value"><?= count($lots) ?></span>
+        <span class="kpi-label">Estacionamientos</span>
+    </div>
+    <div class="kpi">
+        <span class="kpi-value kpi-error"><?= (int) $totalOccupied ?></span>
+        <span class="kpi-label">Ocupados ahora</span>
+    </div>
+    <div class="kpi">
+        <span class="kpi-value kpi-success"><?= (int) $totalFree ?></span>
+        <span class="kpi-label">Lugares libres</span>
+    </div>
+    <div class="kpi">
+        <span class="kpi-value"><?= (int) $totalSpaces ?></span>
+        <span class="kpi-label">Capacidad total</span>
+    </div>
+</div>
+
 <section class="stat-grid">
     <?php foreach ($lots as $lot): ?>
         <div class="card">

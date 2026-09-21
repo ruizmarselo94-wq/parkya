@@ -56,12 +56,12 @@
                     <?php foreach ($spaces as $space): ?>
                         <tr>
                             <td><?= e($space['code']) ?></td>
-                            <td><?= e($space['type']) ?></td>
+                            <td><?= e(label($space['type'])) ?></td>
                             <td>
                                 <?php if ($space['is_occupied']): ?>
                                     <span class="badge">Ocupado</span>
                                 <?php else: ?>
-                                    <span class="badge badge-success"><?= e($space['status']) ?></span>
+                                    <span class="badge badge-success"><?= e(label($space['status'])) ?></span>
                                 <?php endif; ?>
                             </td>
                         </tr>

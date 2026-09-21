@@ -127,6 +127,26 @@ h2 { letter-spacing: -0.01em; }
     align-items: start;
 }
 
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+}
+
+.kpi {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.25rem;
+    box-shadow: var(--shadow);
+}
+
+.kpi-value { display: block; font-size: 1.9rem; font-weight: 800; letter-spacing: -0.02em; }
+.kpi-label { display: block; font-size: 0.85rem; color: var(--muted); margin-top: 0.15rem; }
+.kpi-error { color: var(--error); }
+.kpi-success { color: var(--success); }
+
 /* Tarjetas de resumen (dashboard): no se estiran a lo ancho cuando hay pocas */
 .stat-grid {
     display: grid;
@@ -156,6 +176,10 @@ h2 { letter-spacing: -0.01em; }
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media (min-width: 640px) {
+    .auth-page { min-height: calc(100vh - 4rem); }
 }
 
 .auth-page .card {
@@ -192,8 +216,10 @@ h2 { letter-spacing: -0.01em; }
     pointer-events: none;
 }
 
-.input-icon input { padding-left: 2.5rem; }
-.input-icon.password-field input { padding-right: 2.5rem; }
+.input-icon input[type="text"],
+.input-icon input[type="password"] { padding-left: 2.5rem; }
+
+.input-icon.password-field input[type="password"] { padding-right: 2.5rem; }
 
 fieldset {
     border: 1px solid var(--border);
@@ -310,7 +336,16 @@ button:hover { background: var(--primary-dark); }
 .password-field.revealed .icon-show { display: none; }
 .password-field.revealed .icon-hide { display: block; }
 
-.inline-form { margin-bottom: 1rem; }
+.inline-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.inline-form label { margin-bottom: 0; flex: 0 1 220px; }
+.inline-form button { flex-shrink: 0; }
 
 /* Las tablas no se achican: en pantallas angostas se scrollea horizontal en vez de cortarse */
 .table-wrap {

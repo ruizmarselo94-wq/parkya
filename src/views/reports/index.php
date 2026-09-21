@@ -33,7 +33,7 @@
         <?php foreach ($income as $row): ?>
             <tr>
                 <td><?= e($row['day']) ?></td>
-                <td><?= e($row['method']) ?></td>
+                <td><?= e(label($row['method'])) ?></td>
                 <td><?= money($row['total']) ?> Gs.</td>
             </tr>
         <?php endforeach; ?>

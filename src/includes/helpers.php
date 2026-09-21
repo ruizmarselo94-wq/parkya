@@ -24,3 +24,35 @@ function flash(string $key, ?string $message = null): ?string {
 function money(float|string $amount): string {
     return number_format((float) $amount, 0, ',', '.');
 }
+
+// Traduce los valores de enums de la BD (guardados en inglés) para mostrarlos en español
+function label(?string $key): string {
+    static $labels = [
+        // rates.type
+        'hourly' => 'Por hora',
+        'daily' => 'Por día',
+        'monthly' => 'Mensual',
+        // spaces.type
+        'standard' => 'Estándar',
+        'handicap' => 'Discapacidad',
+        'compact' => 'Compacto',
+        // spaces.status
+        'available' => 'Disponible',
+        'reserved' => 'Reservado',
+        'out_of_service' => 'Fuera de servicio',
+        // vehicles.type
+        'car' => 'Auto',
+        'motorcycle' => 'Moto',
+        'van' => 'Camioneta',
+        // users.role
+        'admin' => 'Administrador',
+        'operator' => 'Operador',
+        'cashier' => 'Cajero',
+        // payments.method
+        'cash' => 'Efectivo',
+        'card' => 'Tarjeta',
+        'pos' => 'POS',
+        'transfer' => 'Transferencia',
+    ];
+    return $labels[$key ?? ''] ?? (string) $key;
+}

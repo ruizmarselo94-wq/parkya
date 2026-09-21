@@ -38,7 +38,7 @@
             <tbody>
                 <?php foreach ($rates as $rate): ?>
                     <tr>
-                        <td><?= e($rate['type']) ?></td>
+                        <td><?= e(label($rate['type'])) ?></td>
                         <td><?= money($rate['amount']) ?> Gs.</td>
                         <td><?= e($rate['valid_from']) ?></td>
                         <td><?= e($rate['valid_to'] ?? 'indefinido') ?></td>
