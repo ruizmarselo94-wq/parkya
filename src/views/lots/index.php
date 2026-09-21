@@ -31,11 +31,11 @@
                     <span class="muted"><?= e($lot['address']) ?></span>
                     <?= $lot['is_active'] ? '' : '<span class="badge">inactivo</span>' ?>
                     <div class="row-actions">
-                        <a href="lots.php?edit_lot=<?= (int) $lot['id'] ?>">Editar</a>
+                        <a class="btn-action btn-edit" href="lots.php?edit_lot=<?= (int) $lot['id'] ?>">Editar</a>
                         <form method="post" onsubmit="return confirm('¿Eliminar este estacionamiento? Se borran también sus lugares y tarifas.');">
                             <input type="hidden" name="action" value="delete_lot">
                             <input type="hidden" name="id" value="<?= (int) $lot['id'] ?>">
-                            <button type="submit" class="link-danger">Eliminar</button>
+                            <button type="submit" class="btn-action btn-delete">Eliminar</button>
                         </form>
                     </div>
                 </li>
@@ -121,12 +121,12 @@ $spaceStatuses = ['available' => 'Disponible', 'reserved' => 'Reservado', 'out_o
                             </td>
                             <td>
                                 <div class="row-actions">
-                                    <a href="lots.php?lot_id=<?= $selectedLotId ?>&edit_space=<?= (int) $space['id'] ?>">Editar</a>
+                                    <a class="btn-action btn-edit" href="lots.php?lot_id=<?= $selectedLotId ?>&edit_space=<?= (int) $space['id'] ?>">Editar</a>
                                     <form method="post" onsubmit="return confirm('¿Eliminar este lugar?');">
                                         <input type="hidden" name="action" value="delete_space">
                                         <input type="hidden" name="lot_id" value="<?= $selectedLotId ?>">
                                         <input type="hidden" name="id" value="<?= (int) $space['id'] ?>">
-                                        <button type="submit" class="link-danger">Eliminar</button>
+                                        <button type="submit" class="btn-action btn-delete">Eliminar</button>
                                     </form>
                                 </div>
                             </td>

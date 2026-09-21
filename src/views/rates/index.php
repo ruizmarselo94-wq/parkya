@@ -61,12 +61,12 @@
                         <td><?= e($rate['valid_to'] ?? 'indefinido') ?></td>
                         <td>
                             <div class="row-actions">
-                                <a href="rates.php?lot_id=<?= $selectedLotId ?>&edit_rate=<?= (int) $rate['id'] ?>">Editar</a>
+                                <a class="btn-action btn-edit" href="rates.php?lot_id=<?= $selectedLotId ?>&edit_rate=<?= (int) $rate['id'] ?>">Editar</a>
                                 <form method="post" onsubmit="return confirm('¿Eliminar esta tarifa?');">
                                     <input type="hidden" name="action" value="delete">
                                     <input type="hidden" name="lot_id" value="<?= $selectedLotId ?>">
                                     <input type="hidden" name="id" value="<?= (int) $rate['id'] ?>">
-                                    <button type="submit" class="link-danger">Eliminar</button>
+                                    <button type="submit" class="btn-action btn-delete">Eliminar</button>
                                 </form>
                             </div>
                         </td>

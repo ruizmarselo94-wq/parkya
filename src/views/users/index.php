@@ -58,11 +58,11 @@
                         </td>
                         <td>
                             <div class="row-actions">
-                                <a href="users.php?edit_id=<?= (int) $u['id'] ?>">Editar</a>
+                                <a class="btn-action btn-edit" href="users.php?edit_id=<?= (int) $u['id'] ?>">Editar</a>
                                 <form method="post" onsubmit="return confirm('¿Eliminar este usuario?');">
                                     <input type="hidden" name="action" value="delete">
                                     <input type="hidden" name="id" value="<?= (int) $u['id'] ?>">
-                                    <button type="submit" class="link-danger">Eliminar</button>
+                                    <button type="submit" class="btn-action btn-delete">Eliminar</button>
                                 </form>
                             </div>
                         </td>
