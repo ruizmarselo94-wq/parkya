@@ -3,7 +3,7 @@
 <div class="stack">
     <div class="card">
         <h2><?= $editLot ? 'Editar estacionamiento' : 'Nuevo estacionamiento' ?></h2>
-        <form method="post" class="fields">
+        <form method="post" class="fields fields-2">
             <?php if ($editLot): ?>
                 <input type="hidden" name="action" value="update_lot">
                 <input type="hidden" name="id" value="<?= (int) $editLot['id'] ?>">
@@ -75,7 +75,7 @@ $spaceStatuses = ['available' => 'Disponible', 'reserved' => 'Reservado', 'out_o
     <div class="stack">
         <div class="card">
             <h2><?= $editSpace ? 'Editar lugar de ' : 'Nuevo lugar en ' ?><?= e($selectedLot['name']) ?></h2>
-            <form method="post" class="fields">
+            <form method="post" class="fields fields-2">
                 <input type="hidden" name="lot_id" value="<?= $selectedLotId ?>">
                 <?php if ($editSpace): ?>
                     <input type="hidden" name="action" value="update_space">

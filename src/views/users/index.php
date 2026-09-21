@@ -3,7 +3,7 @@
 <div class="stack">
     <div class="card">
         <h2><?= $editUser ? 'Editar usuario' : 'Nuevo usuario' ?></h2>
-        <form method="post" class="fields">
+        <form method="post" class="fields fields-3">
             <?php if ($editUser): ?>
                 <input type="hidden" name="action" value="update">
                 <input type="hidden" name="id" value="<?= (int) $editUser['id'] ?>">

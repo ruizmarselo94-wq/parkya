@@ -34,7 +34,7 @@ $lotName = $selectedLot['name'] ?? '';
             <?= $editRate ? 'Editar tarifa' : 'Nueva tarifa' ?>
             <?= $lotName !== '' ? 'de ' . e($lotName) : '' ?>
         </h2>
-        <form method="post" class="fields">
+        <form method="post" class="fields fields-4">
             <input type="hidden" name="lot_id" value="<?= $selectedLotId ?>">
             <?php if ($editRate): ?>
                 <input type="hidden" name="action" value="update">

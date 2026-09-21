@@ -278,7 +278,10 @@ legend {
     color: var(--text);
 }
 
-/* Formularios con varios campos: 2-3 columnas en pantallas anchas en vez de una lista larga */
+/* Formularios con varios campos: varias columnas en pantallas anchas en vez
+   de una lista larga. Cada formulario declara cuántas columnas quiere según
+   cuántos campos tiene, así las filas quedan parejas y los inputs se reparten
+   todo el ancho de la card (auto-fit dejaba filas cortadas y huecos al costado). */
 @media (min-width: 700px) {
     .fields {
         display: grid;
@@ -287,8 +290,18 @@ legend {
         align-items: start;
     }
 
+    .fields-2 { grid-template-columns: repeat(2, 1fr); }
+    .fields-3 { grid-template-columns: repeat(3, 1fr); }
+    .fields-4 { grid-template-columns: repeat(4, 1fr); }
+
     .fields > legend { grid-column: 1 / -1; }
-    .fields > button { grid-column: 1 / -1; margin-top: 0.25rem; }
+
+    .fields > button {
+        grid-column: 1 / -1;
+        justify-self: start;
+        width: auto;
+        margin-top: 0.25rem;
+    }
 }
 
 label {
